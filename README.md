@@ -9,7 +9,7 @@ use library;
 
 drop table if exists book_details;
 
-## creating table with book_details;
+# creating table with book_details;
 
 create table book_details (
 Book_id int primary key,
@@ -35,7 +35,7 @@ insert into book_details values(0001,'The Monk who sold his Ferrari','English',1
 
 select*from book_details;
 
-##creating table Binding_details;
+# creating table Binding_details;
 
 create table binding_details (
 Binding_id int primary key,
@@ -63,7 +63,7 @@ from book_details as b
 inner join Binding_details as bi
 on b.Binding_id=bi.Binding_id;
 
-##creating table category_details;
+# creating table category_details;
 
 create table category_details(
 Category_id int primary key,
@@ -92,7 +92,7 @@ on b.Binding_id=bi.Binding_id)
 inner join category_details as c
 on b.Category_id=c.Category_id);
 
-##creating table borrower_details;
+# creating table borrower_details;
 
 drop table if exists borrower_details;
 
@@ -147,7 +147,7 @@ on b.Category_id=c.Category_id)
 inner join borrower_details as bo
 on b.Book_id=bo.Book_id);
 
-##creating table staff_details
+# creating table staff_details
 
 create table staff_details (
 Staff_id int primary key,
@@ -227,7 +227,8 @@ on bo. Issued_by=s.Staff_id);
 
 select * from lib_management;
 
-#calculate fine for the defaulters (Rs. 20 per day for total no.of days)
+# calculate fine for the defaulters (Rs. 20 per day for total no.of days)
+
 select *,datediff(Borrowed_to,Borrowed_from) as 'Duration_of_Book_Issued',
  datediff(Actual_return_date,Borrowed_from) as 'Actual_Duration_of_Book_Issued',
  (datediff(Actual_return_date,Borrowed_from)-datediff(Borrowed_to,Borrowed_from))*20 as 'fine'from lib_management
